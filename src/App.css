@@ -1,38 +1,165 @@
-.App {
-  text-align: center;
+* {
+    background-color: #DEE5D4;
+    font-family: "Archivo Black", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.title {
+    color: #8EACCD;
+    text-align: center;
+    font-size: 80px;
+    margin: 20px 0;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.weather-container {
+    background-color: #FEF9D9;
+    color: #f5df96;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    width: 400px;
+    margin: 50px auto;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+input {
+    padding: 10px;
+    margin: 10px 0;
+    width: 80%;
+    border-radius: 4px;
+    font-size: 16px;
 }
 
-.App-link {
-  color: #61dafb;
+button {
+    padding: 10px 15px;
+    background-color: #f5df96;
+    margin-top: 25px;
+    color: rgb(39, 26, 18);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+button:hover {
+    background-color: #bea75b;
+}
+
+.weather-info {
+    color: #8EACCD;
+    margin-top: 20px;
+    text-align: center;
+}
+
+.weather-info h3 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.weather-info p {
+    font-size: 18px;
+    margin: 5px 0;
+}
+
+.weather-info img {
+    margin-top: 10px;
+    width: 100px;
+}
+
+.graph-container {
+    background-color: #DEE5D4;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 30px;
+    margin-bottom: 100px;
+}
+
+.graph-button {
+    padding: 10px 15px;
+    background-color: #D2E0FB;
+    margin-top: 25px;
+    color: rgb(39, 26, 18);
+    border: 2px solid #8EACCD;  
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+.graph-button:hover {
+    background-color: #8EACCD;
+}
+
+.graph-toggle-buttons {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.graph-display {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    margin-left: -150px;
+}
+
+.bar-graph, .line-graph {
+    width: 80%;
+    max-width: 600px;
+}
+
+.weather-details {
+    width: 100%;
+    text-align: center;
+}
+
+svg {
+    background-color: #DEE5D4;
+}
+
+.top {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 500px;
+}
+
+.login-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 5rem;
+}
+
+
+.login-container h2 {
+    font-size: 36px;
+    color: #8EACCD;
+    margin-bottom: 20px;
+}
+
+.login-container input {
+    padding: 12px;
+    margin: 10px 0;
+    width: 100%;
+    border: 2px solid #8EACCD;
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: #FFF;
+    color: #333;
+}
+
+.login-button {
+    padding: 10px 15px;
+    background-color: #D2E0FB;
+    color: rgb(39, 26, 18);
+    border: 2px solid #8EACCD;  
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
 }
