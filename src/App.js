@@ -7,24 +7,21 @@ import WeatherRedux from './components/WeatherRedux';
 function App() {
   const [loggedInUser, setLoggedInUser] = useState("");
 
-  // Timeout duration (e.g., 5 minutes)
-  const SESSION_TIMEOUT = 5 * 60 * 1000;
+  const sessionTimer = 5 * 60 * 1000;
 
-  // Handle logout and clear session data
   const handleLogout = () => {
     setLoggedInUser("");
     sessionStorage.removeItem("isLoggedIn");
     alert("session timed out. you have been logged out.");
   };
 
-  // Start session timeout when user logs in
   useEffect(() => {
     if (loggedInUser) {
       sessionStorage.setItem("isLoggedIn", true);
 
       const timer = setTimeout(() => {
         handleLogout();
-      }, SESSION_TIMEOUT);
+      }, sessionTimer);
 
       return () => clearTimeout(timer);
     }

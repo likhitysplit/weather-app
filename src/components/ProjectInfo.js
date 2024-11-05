@@ -46,6 +46,6 @@ PROJECT PLANNING:
             add cityInformation component
                 add pop-up window w/ info about the city
                 transferring data between components (cityWeather) w/ storage file
-            use git for version history 
+            use git for version history  --> ALMOST DONE !!
                 set up github repository
 */
