@@ -48,4 +48,56 @@ PROJECT PLANNING:
                 transferring data between components (cityWeather) w/ storage file
             use git for version history  --> ALMOST DONE !!
                 set up github repository
+
+            validation for buttons (disabled when no values) --> thurs. nov 7
+            implement mock data APIs DONE !!
+                set delay time to ensure data is fetched properly (w/o disturbing other functions) DONE !!
+            set loading UI for when data is being fetched (delay time) DONE !!
+            set roles DONE !!
+                set admin role for likhi user (visibility -> to see city information tab) DONE !!
+                add one more user -> curr roles DONE !!
+                    one admin DONE !!
+                    one reg user DONE !!
+                    one user w/o perms to login DONE !!
+
+            validation for buttons (disabled when no values) --> tues. nov 12
+            add registration form for users  DONE 
+                add field for role w/ select options DONE 
+                if chosen username already exists, give validation message DONE 
+                password should have certain requirements DONE 
+            create separate repo branch (NOT WORKING)
+            user validation pt. 2
+                get user info using URLs (queryparam) -> use this to check role DONE
+                use common loader component for both get weather and city information (universal) DONE
+                    add dynamic parameters DONE
+                show user role when displaying name at the top DONE
+                    use diff color for name for admins DONE
+            add country param to user DONE 
+                use country (ex. usa) to determine if fahrenheit or celsius data should be displayed DONE
+
+
+            if there is extra time..
+                use bootstrap + flex to make website more responsive
+            set up "like" component to be used in both getweather and cityinfo components
+                users will have "getweather_liked" or "cityinfo_liked" field that the liked cities will be saved to
+                    if liked in both components, push data to user array
+            
+            give password validation as user enters password (dynamic)
+                below input text field (even when user hasn't entered entire password yet)
+            set manual delay time in WeatherRedux before displaying 
+                set timeout so the data is taken from API after a few seconds
+            lengthen session time to 1 hour (user automatically logged out after)
+            disable register button if user is already registered
+                display text underneath input box
+            store data in a local storage (based on sessions)
+                fetch data from there
+                allows for new users to be added
+            dynamic username checking
+                starts comparing new username after 3 characters
+            
+
+                
+
 */
+
+

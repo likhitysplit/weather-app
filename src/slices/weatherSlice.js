@@ -1,4 +1,3 @@
-// slices/weatherSlice.js
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
