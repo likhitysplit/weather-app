@@ -8,8 +8,9 @@ import MmGraph from './MmGraph';
 import '../App.css';
 import CityInformation from './CityInformation.js';
 import Loader from './Loader';
+import LikeButton from './LikeButton'; 
 
-const WeatherRedux = ({ loggedInUser, handleLogout }) => {
+const WeatherRedux = ({ loggedInUser, handleLogout, likedData, handleLike }) => { 
   const [city, setCity] = useState('');
   const [selectedGraph, setSelectedGraph] = useState('bar');
   const [showCityInfo, setShowCityInfo] = useState(false);
@@ -24,24 +25,39 @@ const WeatherRedux = ({ loggedInUser, handleLogout }) => {
 
   const searchParams = new URLSearchParams(search);
   const country = searchParams.get('country') || 'USA';  
-  const role = searchParams.get('role') || 'regular';   
+  const role = searchParams.get('role') || 'regular';  
+
+  const delayFetchWeather = (city) => {
+    setLoading(true); 
+    setTimeout(() => {
+      dispatch(fetchWeatherData(city)).finally(() => setLoading(false)); 
+    }, 3000); 
+  };
 
   useEffect(() => {
     if (!loggedInUser) {
       navigate('/');
     } else if (urlCity) {
       setCity(urlCity);
-      setLoading(true);
-      dispatch(fetchWeatherData(urlCity)).then(() => setLoading(false));
+      delayFetchWeather(urlCity); 
     }
   }, [loggedInUser, urlCity, dispatch, navigate]);
 
+  useEffect(() => {
+    if (searchParams.get('premium') === 'true') {
+      loggedInUser.premium = true; 
+    }
+  }, [searchParams, loggedInUser]);
+
   const handleFetchWeather = () => {
     if (city) {
-      setLoading(true);
-      dispatch(fetchWeatherData(city)).then(() => setLoading(false));
-      navigate(`/${loggedInUser.username}/${city}?country=${country}&role=${role}`);
-      setCity('');
+        try {
+          delayFetchWeather(city); 
+          navigate(`/${loggedInUser.username}/${city}?country=${country}&role=${role}`);
+          setCity('');
+        } catch {
+          console.error("failed to get weather information.");
+        }
     }
   };
 
@@ -77,6 +93,12 @@ const WeatherRedux = ({ loggedInUser, handleLogout }) => {
                 <div className="weather-details">
                   <div className="weather-info">
                     <h3>weather in {weatherData.location.name}</h3>
+                    <LikeButton
+                      cityName={weatherData.location.name}
+                      where_liked="getweather_liked"
+                      likedData={likedData}
+                      handleLike={handleLike}
+                    />
                     <p>temperature: {country === 'USA' ? `${weatherData.current.temp_f} °F` : `${weatherData.current.temp_c} °C`}</p>
                     <p>feels like: {country === 'USA' ? `${weatherData.current.feelslike_f} °F` : `${weatherData.current.feelslike_c} °C`}</p>
                     <p>condition: {weatherData.current.condition.text}</p>
@@ -84,10 +106,12 @@ const WeatherRedux = ({ loggedInUser, handleLogout }) => {
                   </div>
                 </div>
 
+                {loggedInUser.premium && ( 
+              <div className="graphs-premium">
                 <div className="graph-toggle-buttons">
                   <button onClick={() => setSelectedGraph('bar')} className="graph-button">7-day forecast</button>
-                  <button onClick={() => setSelectedGraph('line')} className="graph-button">precipitation (in.)</button>
-                  <button onClick={() => setSelectedGraph('line_mm')} className="graph-button">precipitation (mm.)</button>
+                  <button onClick={() => setSelectedGraph('line')} className="graph-button">Precipitation (in.)</button>
+                  <button onClick={() => setSelectedGraph('line_mm')} className="graph-button">Precipitation (mm.)</button>
                 </div>
 
                 <div className="graph-display">
@@ -96,14 +120,18 @@ const WeatherRedux = ({ loggedInUser, handleLogout }) => {
                   {selectedGraph === 'line_mm' && <MmGraph weatherData={weatherData} />}
                 </div>
               </div>
+            )}
+              </div>
             )
           )}
 
           {showCityInfo && (
             <CityInformation
-              cityName={city}
-              onClose={() => setShowCityInfo(false)}
-            />
+            cityName={city}
+            onClose={() => setShowCityInfo(false)}
+            likedData={likedData} 
+            handleLike={handleLike} 
+          />
           )}
         </>
       )}

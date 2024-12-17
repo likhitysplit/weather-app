@@ -82,21 +82,59 @@ PROJECT PLANNING:
                 users will have "getweather_liked" or "cityinfo_liked" field that the liked cities will be saved to
                     if liked in both components, push data to user array
             
-            give password validation as user enters password (dynamic)
-                below input text field (even when user hasn't entered entire password yet)
-            set manual delay time in WeatherRedux before displaying 
-                set timeout so the data is taken from API after a few seconds
-            lengthen session time to 1 hour (user automatically logged out after)
-            disable register button if user is already registered
-                display text underneath input box
-            store data in a local storage (based on sessions)
-                fetch data from there
-                allows for new users to be added
-            dynamic username checking
-                starts comparing new username after 3 characters
-            
 
+            give password validation as user enters password (dynamic) DONE 
+                below input text field (even when user hasn't entered entire password yet) DONE
+            set manual delay time in WeatherRedux before displaying  DONE
+                set timeout so the data is taken from API after a few seconds DONE
+            lengthen session time to 1 hour (user automatically logged out after) DONE
+            disable register button if user is already registered DONE 
+                display text underneath input box DONE
+            store data in a local storage (based on sessions) DONE
+                fetch data from there DONE
+                allows for new users to be added DONE
+            dynamic username checking DONE
+                starts comparing new username after 3 characters DONE
+            
+            
+            
+            use bootstrap to make website more responsive/interactive + explore bootstrap further --> thurs. nov. 19th DONE
+                look into w3schools + bootstrap official site DONE
+                use bootstrap components + mix with current components DONE
+            set up "like" component to be used in both getweather and cityinfo components DONE?
+                users will have "getweather_liked" or "cityinfo_liked" field that the liked cities will be saved to DONE?
+                    if liked in both components, push data to user array 
+            look into react's implementations of "lazy-loading" DONE
+                components only get rendered (better optimization) DONE
+                https://react.dev/reference/react/lazy DONE
+                also add lazy loading for images (on cityinformation component) DONE
+            edit role calls so that it uses query params to set + fetch data DONE
+            set up "router outlet" that loads dynamic data DONE
+                does not include header + footer (universal components) DONE
+                helps set up a single-page application DONE            
                 
+
+                remove header/footer page from login/register page DONE !!
+                add interactive features to header + footer (borders, buttons) DONE !!
+                start off w counting # of likes in likebutton component DONE !!
+                    (split up w/ separate fields for cityinfo_liked and getweather_liked) DONE !!
+                    start off w array of cities based on location DONE !!
+                add encryption to storage values (users data) DONE !!
+                    when fetching data, decrypt the encrypted data from earlier DONE !!
+
+
+                dec. 10th TO-DO !!
+
+                fix undefined data transfer (w/ cityinformation component)  DONE !!
+                handle errors (use try-catch) to check for errors w data DONE !!
+                    in multiple components (ex. weatherredux, login/register, likecomponent) DONE !!
+                add guards for invalid paths (based on user roles) DONE !!
+                    prevent the user from routing thru specific paths if they aren't allowed DONE !!
+                keep a "subscription" option for users DONE !!
+                    if the user has a subscription, he can view the graphs ('premium' version) DONE !!
+                add to the register component -> lets the user register directly via google  --> 401 UNAUTHORIZED ERROR !! TROUBLESHOOT !!
+                
+                deploy new repos for weather app and to-do app DONE !!
 
 */
 
